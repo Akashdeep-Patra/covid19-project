@@ -1,10 +1,36 @@
-.app__header {
+.App {
+  padding: 20px;
   display: flex;
-  //   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  .country-options {
-    width: 300px;
+  justify-content: space-evenly;
+  .covid-heading {
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    font-size: 25px;
+  }
+  .MuiCard-root {
+    border-radius: 6px;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    .country-options {
+      width: 250px;
+    }
+  }
+  &__right {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07);
+  }
+
+  &__left {
+    flex: 0.8;
+  }
+}
+
+@media (max-width: 1070px) {
+  .App {
+    flex-direction: column;
   }
 }
