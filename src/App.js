@@ -82,7 +82,9 @@ class App extends React.Component {
               <h3 className="live-heading">Live cases by country</h3>
               <Table objects={countryObjects} />
               <h3 className="live-heading">Historical stats</h3>
-              <LineGraph />
+              <div className="chart-app-wrapper">
+                <LineGraph />
+              </div>
             </CardContent>
           </Card>
         </div>

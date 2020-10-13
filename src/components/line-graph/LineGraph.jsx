@@ -24,13 +24,13 @@ class LineGraph extends React.Component {
       cases: val[1].cases,
     }));
 
-    console.log(data);
+    // console.log(data);
     this.setState({ data });
   };
   render() {
     const { data } = this.state;
     return (
-      <ResponsiveContainer className="chart" width="100%" height={200}>
+      <ResponsiveContainer className="chart" width="100%" height={220}>
         <LineChart
           width={100}
           height={100}
