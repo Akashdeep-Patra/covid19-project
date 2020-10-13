@@ -32,3 +32,23 @@ export const getCountryData = async () => {
   }));
   return countries;
 };
+
+export const getHistoricalData = async () => {
+  const url = "https://disease.sh/v3/covid-19/historical/all?lastdays=30";
+  const { data } = await axios.get(url);
+  const result = {};
+  Object.entries(data.cases).forEach((val, index) => {
+    result[val[0]] = {};
+    result[val[0]]["cases"] = val[1];
+    // console.log(val[0], val[1]);
+  });
+  Object.entries(data["deaths"]).forEach((val, index) => {
+    result[val[0]]["deaths"] = val[1];
+  });
+  Object.entries(data["recovered"]).forEach((val, index) => {
+    result[val[0]]["recovered"] = val[1];
+  });
+  //   console.log(data);
+
+  return result;
+};

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.scss";
 import Select from "react-select";
+import LineGraph from "./components/line-graph/LineGraph";
 import {
   getCountryData,
   getCountries,
@@ -78,9 +79,10 @@ class App extends React.Component {
         <div className="App__right">
           <Card>
             <CardContent>
-              <h3>Live cases by country</h3>
+              <h3 className="live-heading">Live cases by country</h3>
               <Table objects={countryObjects} />
-              <h3>World wide new cases</h3>
+              <h3 className="live-heading">Historical stats</h3>
+              <LineGraph />
             </CardContent>
           </Card>
         </div>
