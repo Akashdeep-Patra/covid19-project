@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import Select from "react-select";
 import LineGraph from "./components/line-graph/LineGraph";
-import { CircularProgress } from "@material-ui/core";
+// import { CircularProgress } from "@material-ui/core";
 import {
 //   getCountryData,
   getCountries,
@@ -45,6 +45,14 @@ class App extends React.Component {
       recovered,
     });
   }
+//   UNSAFE_componentWillUpdate(){
+//       const loader=document.getElementById("load")
+//       loader.classList.add("loader")
+//   }
+//   UNSAFE_componentDidUpdate(){
+//     const loader=document.getElementById("load")
+//     loader.classList.remove("loader")
+//   }
   onCountrySelect = async (obj) => {
     const selectedCountry = obj.value;
     const { deaths, cases, recovered } =
@@ -75,13 +83,6 @@ class App extends React.Component {
       mapCenter,
       mapZoom,
     } = this.state;
-    if (countryOptions.length === 0) {
-      return (
-        <div className="spinner">
-          <CircularProgress disableShrink color="inherit" size={100} />
-        </div>
-      );
-    }
     return (
       <div className="App">
         <div className="App__left">
