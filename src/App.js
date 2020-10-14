@@ -23,7 +23,11 @@ class App extends React.Component {
     countryObjects: [],
     mapCenter: { lat: 34.80746, lng: -40.4796 },
     mapZoom: 1.5,
+    casesType:"cases",
   };
+  handleClick=(casesType)=>{
+    this.setState({casesType});
+  }
   async componentDidMount() {
     const countries = await getCountries();
     // const countryObjects = await getCountryData();
@@ -82,6 +86,7 @@ class App extends React.Component {
       countryObjects,
       mapCenter,
       mapZoom,
+      casesType,
     } = this.state;
     return (
       <div className="App">
@@ -96,9 +101,9 @@ class App extends React.Component {
             />
           </div>
           <div className="App__stats">
-            <StatGrid deaths={deaths} recovered={recovered} cases={cases} />
+            <StatGrid deaths={deaths} handleClick={this.handleClick} recovered={recovered} cases={cases} />
           </div>
-          <Map countries={countryObjects} center={mapCenter} zoom={mapZoom} />
+          <Map countries={countryObjects} casesType={casesType} center={mapCenter} zoom={mapZoom} />
         </div>
         <div className="App__right">
           <Card>

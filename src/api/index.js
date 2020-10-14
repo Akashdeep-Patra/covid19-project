@@ -106,12 +106,12 @@ const casesTypeColors = {
   },
   recovered: {
     hex: "#7dd71d",
-    rgba: "rgb(125, 215, 29,.7)",
+    rgba: "rgba(70, 206, 122, 0.7)",
     multiplier: 500,
   },
   deaths: {
     hex: "#fb4443",
-    rgba: "rgb(251, 68, 67,.7)",
-    multiplier: 500,
+    rgba: "rgba(230, 61, 61, 0.7)",
+    multiplier: 1500,
   },
 };

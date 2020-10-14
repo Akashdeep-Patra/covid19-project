@@ -3,9 +3,9 @@ import "./StatGrid.scss";
 
 import { Card, CardContent, Typography } from "@material-ui/core";
 import Countup from "react-countup";
-const StatGrid = ({ deaths, cases, recovered }) => (
+const StatGrid = ({handleClick, deaths, cases, recovered }) => (
   <div className="container">
-    <Card className="card card__cases">
+    <Card onClick={()=>handleClick("cases")} className="card card__cases">
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           Cases
@@ -18,7 +18,7 @@ const StatGrid = ({ deaths, cases, recovered }) => (
         </Typography>
       </CardContent>
     </Card>
-    <Card className="card card__recovered">
+    <Card onClick={()=>handleClick("recovered")} className="card card__recovered">
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           Recovered
@@ -31,7 +31,7 @@ const StatGrid = ({ deaths, cases, recovered }) => (
         </Typography>
       </CardContent>
     </Card>
-    <Card className="card card__deaths">
+    <Card onClick={()=>handleClick("deaths")} className="card card__deaths">
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           Deaths
