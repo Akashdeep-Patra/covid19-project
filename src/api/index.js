@@ -1,8 +1,12 @@
 import axios from "axios";
+import {Circle} from "react-leaflet"
 export const getCountries = async () => {
   const url = "https://disease.sh/v3/covid-19/countries";
   const { data } = await axios.get(url);
-  const countries = data.map((object) => object.country);
+  const countries = data.map((object) => ({
+    country: object.country,
+    countryInfo: object.countryInfo,
+  }));
   return countries;
 };
 export const getGlobalData = async () => {
@@ -52,3 +56,7 @@ export const getHistoricalData = async () => {
 
   return result;
 };
+
+
+
+//this function draws the circles in the map and also the tooltip

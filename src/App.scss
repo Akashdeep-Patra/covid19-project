@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-evenly;
   .chart-app-wrapper {
+    align-items: center;
     width: 260px;
   }
   .live-heading {
@@ -36,7 +37,11 @@
     flex: 0.9;
   }
 }
-
+.spinner {
+  padding-top: 20%;
+  display: flex;
+  justify-content: space-evenly;
+}
 @media (max-width: 970px) {
   .App {
     flex-direction: column;

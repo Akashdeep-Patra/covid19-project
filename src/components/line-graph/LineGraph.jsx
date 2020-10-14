@@ -11,6 +11,7 @@ import {
   Legend,
 } from "recharts";
 import { getHistoricalData } from "../../api";
+import "leaflet/dist/leaflet.css";
 class LineGraph extends React.Component {
   state = {
     data: [],

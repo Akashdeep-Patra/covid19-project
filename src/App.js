@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import Select from "react-select";
 import LineGraph from "./components/line-graph/LineGraph";
+import { CircularProgress } from "@material-ui/core";
 import {
   getCountryData,
   getCountries,
@@ -20,13 +21,17 @@ class App extends React.Component {
     deaths: 0,
     recovered: 0,
     countryObjects: [],
+    mapCenter: { lat: 34.80746, lng: -40.4796 },
+    mapZoom: 1.5,
   };
   async componentDidMount() {
     const countries = await getCountries();
     const countryObjects = await getCountryData();
     const options = countries.map((country) => ({
-      value: country,
-      label: country,
+      value: country.country,
+      label: country.country,
+      lat: country.countryInfo.lat,
+      lng: country.countryInfo.long,
     }));
     options.unshift({ value: "Global", label: "Global" });
     const { deaths, cases, recovered } = await getGlobalData();
@@ -46,8 +51,17 @@ class App extends React.Component {
       selectedCountry === "Global"
         ? await getGlobalData()
         : await getDataByCountry(selectedCountry);
+    const mapZoom = selectedCountry === "Global" ? 1.5 : 4;
+    const mapCenter = { lat: obj.lat, lng: obj.lng };
 
-    this.setState({ selectedCountry, deaths, cases, recovered });
+    this.setState({
+      selectedCountry,
+      deaths,
+      cases,
+      recovered,
+      mapCenter,
+      mapZoom,
+    });
     // console.log(value);
   };
   render() {
@@ -58,7 +72,16 @@ class App extends React.Component {
       recovered,
       selectedCountry,
       countryObjects,
+      mapCenter,
+      mapZoom,
     } = this.state;
+    if (countryOptions.length === 0) {
+      return (
+        <div className="spinner">
+          <CircularProgress disableShrink color="inherit" size={100} />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <div className="App__left">
@@ -74,7 +97,7 @@ class App extends React.Component {
           <div className="App__stats">
             <StatGrid deaths={deaths} recovered={recovered} cases={cases} />
           </div>
-          <Map />
+          <Map countries={countryObjects} center={mapCenter} zoom={mapZoom} />
         </div>
         <div className="App__right">
           <Card>
