@@ -4,7 +4,7 @@ import Select from "react-select";
 import LineGraph from "./components/line-graph/LineGraph";
 import { CircularProgress } from "@material-ui/core";
 import {
-  getCountryData,
+//   getCountryData,
   getCountries,
   getGlobalData,
   getDataByCountry,
@@ -26,7 +26,7 @@ class App extends React.Component {
   };
   async componentDidMount() {
     const countries = await getCountries();
-    const countryObjects = await getCountryData();
+    // const countryObjects = await getCountryData();
     const options = countries.map((country) => ({
       value: country.country,
       label: country.country,
@@ -38,7 +38,7 @@ class App extends React.Component {
     // console.log(deaths);
 
     this.setState({
-      countryObjects,
+      countryObjects:countries,
       countryOptions: options,
       deaths,
       cases,
