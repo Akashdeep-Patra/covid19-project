@@ -37,7 +37,7 @@ class App extends React.Component {
       lat: country.countryInfo.lat,
       lng: country.countryInfo.long,
     }));
-    options.unshift({ value: "Global", label: "Global" });
+    options.unshift({ value: "Global", label: "Global" , lat: 34.80746, lng: -40.4796});
     const { deaths, cases, recovered } = await getGlobalData();
     // console.log(deaths);
 
@@ -64,6 +64,7 @@ class App extends React.Component {
         ? await getGlobalData()
         : await getDataByCountry(selectedCountry);
     const mapZoom = selectedCountry === "Global" ? 1.5 : 4;
+
     const mapCenter = { lat: obj.lat, lng: obj.lng };
 
     this.setState({
